@@ -98,8 +98,8 @@ public class ClientOffline implements Runnable {
         System.out.println("\nWinner: " + winner);
 
         System.out.println("\nMatch score:");
-        System.out.printf(" %s: %d\n", username, userScore);
-        System.out.printf(" MACHINE: %d\n", machineScore);
+        System.out.printf("%s: %d\n", username, userScore);
+        System.out.printf("MACHINE: %d\n", machineScore);
     }
 
     private int machineMove(int userInput) {
