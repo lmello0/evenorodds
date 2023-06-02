@@ -33,7 +33,7 @@ public class GameHandler implements Runnable {
             public void run() {
                 player1.clearScreen();
 
-                player1. sendMessage("Starting match!");
+                player1.sendMessage("Starting match!");
 
                 player1.setUsername();
                 player1.setEven();
@@ -46,7 +46,7 @@ public class GameHandler implements Runnable {
             public void run() {
                 player2.clearScreen();
 
-                player2. sendMessage("Starting match!");
+                player2.sendMessage("Starting match!");
 
                 player2.setUsername();
                 player2.setEven();

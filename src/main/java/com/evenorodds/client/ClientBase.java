@@ -2,7 +2,7 @@ package com.evenorodds.client;
 
 import java.util.Scanner;
 
-public class Client {
+public class ClientBase {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         boolean end = false;

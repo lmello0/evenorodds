@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Server implements Runnable {
     private final int port;
@@ -35,7 +36,6 @@ public class Server implements Runnable {
     public void run() {
         try {
             server = new ServerSocket(port);
-            new Thread(new InputHandler()).start();
 
             System.out.println("[SERVER] Server online on port " + port);
 
@@ -66,28 +66,21 @@ public class Server implements Runnable {
         }
     }
 
-    class InputHandler implements Runnable {
-        @Override
-        public void run() {
-            try {
-                BufferedReader inReader = new BufferedReader(new InputStreamReader(System.in));
-
-                while (true) {
-                    String message = inReader.readLine();
-                    if(message.equals("/quit")) {
-                        inReader.close();
-                        System.out.println("[SERVER] Shutting down...");
-                        shutdown();
-                    }
-                }
-            } catch (IOException e) {
-                shutdown();
-            }
-        }
-    }
-
     public static void main(String[] args) {
-        Server server = new Server(8080);
+        Scanner keyboard = new Scanner(System.in);
+
+        int port;
+        try {
+            System.out.print("Port to run the server: ");
+            port = Integer.parseInt(keyboard.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("The value passed can't be parsed... Running on port " + 8080);
+            port = 8080;
+        }
+
+        Server server = new Server(port);
         server.run();
+
+        keyboard.close();
     }
 }
