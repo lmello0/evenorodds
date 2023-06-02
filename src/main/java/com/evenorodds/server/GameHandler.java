@@ -71,13 +71,13 @@ public class GameHandler implements Runnable {
             String message = player2Even ? "\nYour opponent already chose even! You are now odd" : "\nYour opponent already chose odd! You are now even";
             player2.sendMessage(message);
         }
-
+    }
+    
+    public void play() {
         for (Player p : players) {
             p.sendMessage("\n── " + player1.getUsername() + " ─ VS ─ " + player2.getUsername() + " ──");
         }
-    }
 
-    public void play() {
         Thread tPlayer1 = new Thread(new Runnable() {
             @Override
             public void run() {
